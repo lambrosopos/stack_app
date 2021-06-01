@@ -1,3 +1,4 @@
+from datetime import datetime
 import sqlalchemy
 from flask import Blueprint, render_template, url_for, redirect
 from app.models import StackCount, db
@@ -20,5 +21,13 @@ def increment_stack():
     except Exception as e:
         print('Unable to increase stack count')
         return 'Internal Serval Error', 500
+
+    return redirect(url_for('main_bp.index'))
+
+@main_bp.route('/new')
+def create_stack():
+    new_stack = StackCount(count=0, startDate=str(datetime.now()))
+    db.session.add(new_stack)
+    db.session.commit()
 
     return redirect(url_for('main_bp.index'))
