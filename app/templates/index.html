@@ -20,7 +20,9 @@
             <br />
             <p class="col-md-8 fs-4">Current stack: {{ stack_count }}</p>
             <br />
-            <button class="btn btn-primary btn-lg" type="button">스택 1 증가하기</button>
+            <form action="/increment" method="get">
+            <button type="submit" class="btn btn-primary btn-lg" >스택 1 증가하기</button>
+            </form>
           </div>
         </div>
 
